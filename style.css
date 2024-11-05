@@ -1,0 +1,154 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #A8A9AC;
+	font-family: sans-serif;
+}
+
+#content {
+	width: 90vw;
+	margin-top: 2vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.chat-window {
+	width: 100%;
+	min-height: 85vh;
+	background-color: #D4D5DC;
+	border-radius: 20px;
+}
+
+.input-container {
+	display: flex;
+	height: 10vh;
+	margin-top: 1.5vh;
+}
+
+.input-position {
+	position: fixed;
+	left: 5%;
+	bottom: 1%;
+}
+
+#prompt-input {
+	height: 60%;
+	width: 60vw;
+
+	border: 1px solid #2B245D;
+	border-radius: .6vw 0px 0px .6vw ;
+
+	padding: 5px;
+	resize: none;
+	margin-left: 10vw;
+	outline: none;
+}
+
+#send-btn {
+	height: 7.6vh;
+	width: 8vw;
+	padding: 5px;
+
+	border: 1px solid #2B245D;
+	border-radius: 0px .6vw .6vw 0px;
+	background-color: #4A70A0;
+
+	font-size: 1.1vw;
+	color: white;
+
+	transition: all .3s;
+}
+
+#send-btn:hover {
+	cursor: pointer;
+	filter: brightness(.8);
+}
+
+#send-btn:disabled {
+	opacity: .5;
+}
+
+#send-btn:disabled:hover {
+	filter: none;
+	cursor: default;
+}
+
+#messages-list {
+	width: 100%;
+	height: 100%;
+	list-style-type: none;
+	padding: 2vw;
+}
+
+.message {
+	width: 80vw;
+	margin-bottom: 4vh;
+	display: flex;
+}
+
+.user-message {
+	flex-direction: row-reverse;
+	.title-container {
+		text-align: right;
+	}
+	.message-text-container {
+		text-align: right;
+	}
+	.title-container span {
+/*		color: white;*/
+		font-weight: 700;
+		font-size: 1.6vw;
+		font-family: sans-serif;
+	}
+	.text-container span {
+/*		color: white;*/
+		font-weight: 0;
+		line-height: 1.8vw;
+	}
+}
+
+.gpt-message {
+	flex-direction: row;
+	.title-container span {
+/*		color: white;*/
+		font-weight: 700;
+		font-size: 1.6vw;
+		font-family: sans-serif;
+	}
+}
+
+.avatar-container {
+	width: 4vw;
+	height: 100%;
+}
+
+.avatar {
+	border-radius: 100%;
+	width: 100%;
+}
+
+.text-container {
+	width: 70vw;
+	margin-left: 2vw;
+	margin-right: 2vw;
+}
+
+/*.text-container span {
+	color: white;
+	font-weight: 0;
+	line-height: 1.8vw;
+}*/
+
+.title-container {
+	margin-bottom: 2vh;
+}
+
+/*.title-container span {
+	color: white;
+	font-weight: 700;
+	font-size: 1.6vw;
+	font-family: sans-serif;
+}*/
