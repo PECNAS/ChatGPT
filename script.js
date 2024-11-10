@@ -11,6 +11,9 @@ async function GetAnswer(){
 	var prompt = prompt_input.value;
 	var gpt_model = "gpt-4o-mini";
 
+	if (prompt == '') return;
+
+	loading = true;
 	send_btn.setAttribute("disabled", "");
 	prompt_input.setAttribute("disabled", "");
 	prompt_input.value = "";
@@ -44,7 +47,7 @@ async function GetAnswer(){
 				</div>
 			</li>`;
 
-	document.querySelector(".chat-window").scrollIntoView({ block: "end", behavior: "smooth" });
+	document.querySelector("#footer").scrollIntoView({ block: "end", behavior: "smooth" });
 
 	var msg = {
 				role: "user",
@@ -93,13 +96,12 @@ async function GetAnswer(){
 				</li>`;
 	loading = false;
 
-	document.querySelector(".chat-window").scrollIntoView({ block: "end", behavior: "smooth" });
+	document.querySelector("#footer").scrollIntoView({ block: "end", behavior: "smooth" });
 }
 
 document.addEventListener('keyup', event => {
-	if( event.code === 'Enter' && loading == false)
+	if( event.code == 'Enter' && event.ctrlKey && loading == false)
 	{
 		GetAnswer();
-		loading = true;
 	}
 });
