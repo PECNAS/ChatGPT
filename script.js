@@ -3,6 +3,7 @@ const base_prompt =
 "Каждый свой ответ форматируй, используя html теги и css стили, но не используй html и ```." +
 "Не пиши в ответах фразы по типу 'Да, конечно, я буду использовать' и так далее";
 let history = [];
+let loading = false;
 
 async function GetAnswer(){
 	var prompt_input = document.getElementById("prompt-input");
@@ -28,6 +29,22 @@ async function GetAnswer(){
 						</div>
 					</div>
 				</li>`;
+
+	msgs_list.innerHTML += `<li class="message gpt-message">
+				<div class="avatar-container">
+					<img src="gptlogo.png" class="avatar">
+				</div>
+				<div class="text-container">
+					<div class="title-container">
+						<span>ChatGPT</span>
+					</div>
+					<div class="message-text-container">
+						<span class="loading">...</span>
+					</div>
+				</div>
+			</li>`;
+
+	document.querySelector(".chat-window").scrollIntoView({ block: "end", behavior: "smooth" });
 
 	var msg = {
 				role: "user",
@@ -57,6 +74,10 @@ async function GetAnswer(){
 
 	var answer = data.choices[0].message;
 	history.push(answer);
+
+	var len = msgs_list.childNodes.length;
+	msgs_list.removeChild(msgs_list.childNodes[len - 1]);
+
 	msgs_list.innerHTML += `<li class="message gpt-message">
 					<div class="avatar-container">
 						<img src="gptlogo.png" class="avatar">
@@ -70,8 +91,15 @@ async function GetAnswer(){
 						</div>
 					</div>
 				</li>`;
+	loading = false;
+
+	document.querySelector(".chat-window").scrollIntoView({ block: "end", behavior: "smooth" });
 }
 
 document.addEventListener('keyup', event => {
-	if( event.code === 'Enter' ) GetAnswer();
+	if( event.code === 'Enter' && loading == false)
+	{
+		GetAnswer();
+		loading = true;
+	}
 });
