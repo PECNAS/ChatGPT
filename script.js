@@ -8,7 +8,7 @@ let loading = false;
 async function GetAnswer(){
 	var prompt_input = document.getElementById("prompt-input");
 	var send_btn = document.getElementById("send-btn");
-	var prompt = prompt_input.value;
+	var prompt = prompt_input.value.replace(/\n/g, '<br/>');
 	var gpt_model = "gpt-4o-mini";
 
 	if (prompt == '') return;
@@ -100,7 +100,10 @@ async function GetAnswer(){
 }
 
 document.addEventListener('keyup', event => {
-	if( event.code == 'Enter' && event.ctrlKey && loading == false)
+	if (event.shiftKey && event.code == "Enter")
+	{
+		document.querySelector("#prompt-input").value += "";
+	} else if(event.code == 'Enter' && loading == false)
 	{
 		GetAnswer();
 	}
