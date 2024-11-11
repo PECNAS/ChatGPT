@@ -8,11 +8,89 @@ body {
 	font-family: sans-serif;
 }
 
-#content {
-	width: 90vw;
-	margin-top: 2vh;
+#add-chat-btn {
+	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 2vh;
+	padding: 3%;
+
+	border: none;
+	border-radius: .6666vw;
+	font-weight: 600;
+	font-size: 1vw;
+
+	transition: all .2s;
+}
+
+#add-chat-btn:hover {
+	filter: brightness(.95);
+	cursor: pointer;
+}
+
+.sidebar {
+	height: 88%;
+	width: 17.5vw;
+	padding-left: .5%;
+	padding-right: .5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+
+	position: fixed;
+	left: 1.5%;
+	bottom: 2vh;
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: #d4d5dc;
+	border-radius: 1.333vw;;
+}
+
+.remove-chat {
+	color: red;
+	font-size: .7vw;
+	float: right;
+}
+
+.remove-chat:hover {
+	cursor: pointer;
+	border-bottom: 1px solid red;
+}
+
+.chats-list {
+	overflow-y: scroll;
+}
+
+.chat-element {
+	list-style-type: none;
+	background-color: #a8a9ac;
+	border-radius: .6666vw;
+	padding: 5%;
+	margin-bottom: 1vh;
+	height: 7vh;
+	border-left: 8px solid #2b245d;
+	transition: all .2s;
+}
+
+.chat-element:hover {
+	filter: brightness(.9);
+	cursor: pointer;
+}
+
+.last-message span {
+	font-size: 1vw;
+}
+
+.msgs-count span {
+	font-size: .8vw;
+}
+
+#content {
+	width: 70vw;
+	margin-top: 2vh;
+	margin-left: auto;
+	margin-right: 8vw;
 }
 
 .chat-window {
@@ -30,7 +108,7 @@ body {
 
 .input-position {
 	position: fixed;
-	left: 5%;
+	left: 12%;
 	bottom: 1%;
 }
 
@@ -85,7 +163,7 @@ body {
 }
 
 .message {
-	width: 80vw;
+	width: 60vw;
 	margin-bottom: 4vh;
 	display: flex;
 }
