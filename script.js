@@ -1,5 +1,6 @@
 const base_prompt =
-"Каждый свой ответ форматируй, используя html теги и css стили, но не используй html и ```.";
+"Каждый свой ответ форматируй, используя html теги и css стили. " +
+"НИКОГДА Не пиши ``` и ```html";
 let history = [];
 let loading = false;
 let selectedChat = null;
@@ -155,10 +156,13 @@ function removeChat(chat) {
 
 }
 
-function showChat(chat) {
+function showChat(chat, chat_id) {
 	if (event.target.innerHTML == "Удалить") return;
 
-	var chat_id = chat.querySelector("#chat-id").value;
+	if (chat_id == null) {
+		chat_id = chat.querySelector("#chat-id").value;
+	}
+
 	var msgs_list = document.querySelector("#messages-list");
 	history = JSON.parse(
 		localStorage.getItem("chats")
@@ -201,19 +205,22 @@ function showChat(chat) {
 		}
 	});
 
+	document.querySelector("#footer").scrollIntoView({ block: "end", behavior: "smooth" });
 	document.querySelector("#prompt-input").focus();
 }
 
 function newChat() {
 	var chats = JSON.parse(localStorage.getItem("chats"));
+	var chat_id = chats.length;
 	console.log(typeof(chats));
 	chats.push({
-		"id": chats.length,
+		"id": chat_id,
 		"history": []
 	});
 	showChatsList(chats);
-
 	localStorage.setItem("chats", JSON.stringify(chats));
+	showChat(null, chat_id);
+
 }
 
 document.addEventListener('keyup', event => {
